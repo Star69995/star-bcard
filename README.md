@@ -30,38 +30,6 @@ This React project provides a modern web application framework with a component-
 - Git installed on your machine
 - Your React project pushed to a GitHub repository
 
-### Deploying to GitHub Pages
-
-1. First, install the GitHub Pages package as a dev dependency:
-
-```bash
-npm install --save-dev gh-pages
-```
-
-2. Add the following scripts to your `package.json`:
-
-```json
-"scripts": {
-  // ... other scripts
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-}
-```
-
-3. Add a homepage field to your `package.json`:
-
-```json
-"homepage": "https://yourusername.github.io/your-repo-name"
-```
-
-4. Deploy the application with the following command:
-
-```bash
-npm run deploy
-```
-
-This will build your React application and push it to the `gh-pages` branch of your repository. GitHub Pages will then serve your application from this branch.
-
 ### Important Configuration Notes
 
 - For React Router applications, consider using `HashRouter` instead of `BrowserRouter` for GitHub Pages compatibility
