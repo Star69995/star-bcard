@@ -1,7 +1,6 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useTheme } from "../providers/ThemeContext";
 import { useNavigate } from 'react-router-dom';
-import './Card.css';
 import { useState, useEffect } from "react";
 import { useUser } from "../providers/UserContext";
 import axios from 'axios';
