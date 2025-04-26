@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useTheme } from "../providers/ThemeContext";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useUser } from "../providers/UserContext";
+import { useNavigate } from 'react-router-dom';
 
 const CardDetails = () => {
     const { id } = useParams();
@@ -13,18 +15,19 @@ const CardDetails = () => {
     const [isLiked, setIsLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [token, setToken] = useState(localStorage.getItem('token') || null);
+    const { user, token } = useUser();
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         setLoading(true);
         axios.get(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`)
             .then((res) => {
                 setCard(res.data);
-                // בדיקה אם המשתמש כבר אהב את הכרטיס
-                const userData = localStorage.getItem('userData');
-                if (userData && res.data.likes) {
-                    const userId = JSON.parse(userData)._id;
-                    setIsLiked(res.data.likes.includes(userId));
+                
+                if (user && res.data.likes) {
+                    setIsLiked(res.data.likes?.includes(user?._id) || false); 
+                    
                 }
                 setLikesCount(res.data.likes?.length || 0);
                 setLoading(false);
@@ -34,11 +37,12 @@ const CardDetails = () => {
                 setError("Failed to load card details");
                 setLoading(false);
             });
-    }, [id]);
+    }, [id, user]);
+
+
 
     const toggleLike = async () => {
         if (!token) {
-            // אם המשתמש לא מחובר, להציג הודעה או להפנות לדף התחברות
             alert("Please log in to like cards");
             return;
         }
@@ -55,10 +59,10 @@ const CardDetails = () => {
                     },
                 }
             );
-            setIsLiked(!isLiked);
-            setLikesCount((prev) => (isLiked ? prev - 1 : prev + 1));
 
-            // להמתין שהאנימציה תסתיים
+            setIsLiked(prev => !prev); // עדכון מצב הלייק
+            setLikesCount(prev => (isLiked ? prev - 1 : prev + 1));  // עדכון count לפי הלייק החדש
+
             setTimeout(() => {
                 setIsAnimating(false);
             }, 700);
@@ -67,6 +71,7 @@ const CardDetails = () => {
             setIsAnimating(false);
         }
     };
+
 
     // עיצוב בהתאם לנושא
     const cardStyle = {
@@ -157,6 +162,9 @@ const CardDetails = () => {
     }
 
     if (!card) return null;
+
+    // console.log(isLiked);
+    
 
     const formatDate = (dateString) => {
         const options = {
@@ -378,6 +386,16 @@ const CardDetails = () => {
                                     Back
                                 </button>
                                 <div>
+                                    {user && card.user_id === user._id && (
+                                        <button
+                                            className="btn btn-warning me-2"
+                                            onClick={() => navigate(`/edit-card/${card._id}`)}
+
+                                        >
+                                            <i className="bi bi-pencil-fill me-2"></i>
+                                            Edit
+                                        </button>
+                                    )}
                                     <a
                                         href={`tel:${card.phone}`}
                                         className="btn btn-success me-2"

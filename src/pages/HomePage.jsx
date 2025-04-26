@@ -1,6 +1,5 @@
-import { BsCardList } from "react-icons/bs";
-// import Card from "./Card";
-import CardsPage from "./CardsPage";
+
+import CardsPage from "../components/CardsPage";
 
 function HomePage() {
     return ( <>

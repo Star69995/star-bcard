@@ -130,6 +130,7 @@ function Card({ card }) {
         }
     };
 
+    // console.log(isLiked);
     return (
         <div
             className="card shadow-lg rounded-3"
@@ -196,6 +197,34 @@ function Card({ card }) {
 
                 {/* Action icons container */}
                 <div className="position-absolute bottom-0 end-0 p-3 d-flex gap-3 align-items-center">
+
+                    {user && user._id === card.user_id && (
+                        <button
+                            className="btn btn-sm rounded-circle"
+                            style={{
+                                backgroundColor: theme === "light" ? "#e9ecef" : "#2c2c2c",
+                                width: "32px",
+                                height: "32px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/edit-card/${card._id}`);
+                            }}
+                        >
+                            <i
+                                className="bi bi-pencil-fill bounce-hover"
+                                style={{
+                                    color: theme === "light" ? "#0d6efd" : "#7aafff",
+                                    transition: "transform 0.3s ease"
+                                }}
+                            ></i>
+                        </button>
+                    )}
+
+
                     <button
                         className="btn btn-sm rounded-circle"
                         style={{
@@ -234,6 +263,8 @@ function Card({ card }) {
                         ></i>
                         <span style={likeCountStyle}>{likesCount}</span>
                     </button>
+
+                    
                 </div>
             </div>
         </div>

@@ -51,7 +51,7 @@ const NavbarComponent = () => {
 
                     {user ? <li className="nav-item d-flex align-items-center mx-2">
                         <img
-                            src={user.url || 'public/avatar2.png'}
+                            src={user.url || '/avatar2.png'}
                             alt="Profile"
                             style={{ width: '32px', height: '32px', borderRadius: '50%' }}
                         />
