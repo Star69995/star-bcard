@@ -7,7 +7,7 @@ import NavbarComponent from './components/NavbarComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // Placeholder components for your pages
 import HomePage from './pages/HomePage';
-const AboutPage = () => <div className="container mt-3"><h1>About Page</h1></div>;
+// const AboutPage = () => <div className="container mt-3"><h1>About Page</h1></div>;
 
 import Register from './components/Register';
 // import { ThemeProvider } from './providers/ThemeContext';
@@ -24,6 +24,11 @@ import MyCardsPage from './pages/MyCardsPage';
 import CreateCardForm from './components/CreateCardForm';
 import EditCardForm from './components/EditCardForm';
 import NotFound from './pages/NotFound';
+import AboutPage from './pages/AboutPage';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SandBox = () => { <><h1>Sandbox</h1><p>coming soon</p></> }
 
@@ -53,6 +58,8 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <ToastContainer />
+
 
 
       </div>

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useUser } from "../providers/UserContext";
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Card({ card }) {
     const navigate = useNavigate();
@@ -130,6 +132,22 @@ function Card({ card }) {
         }
     };
 
+    const handleDelete = async (cardId) => {
+        try {
+            await axios.delete(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardId}`, {
+                headers: {
+                    "x-auth-token": token,
+                },
+            });
+            toast.success('Card deleted successfully!');
+
+            window.location.reload();
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+
     // console.log(isLiked);
     return (
         <div
@@ -188,15 +206,34 @@ function Card({ card }) {
                     <i className="bi bi-geo-alt me-2" style={{ color: theme === "light" ? "#0d6efd" : "#7aafff" }}></i>
                     <span style={{ fontSize: "0.9rem" }}>{addressString}</span>
                 </div>
-                {web && (
-                    <div className="d-flex align-items-center">
-                        <i className="bi bi-globe me-2" style={{ color: theme === "light" ? "#0d6efd" : "#7aafff" }}></i>
-                        <span style={{ fontSize: "0.9rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{web}</span>
-                    </div>
-                )}
 
                 {/* Action icons container */}
                 <div className="position-absolute bottom-0 end-0 p-3 d-flex gap-3 align-items-center">
+                    {user && (user._id === card.user_id || user.isAdmin) && (
+                        <button
+                            className="btn btn-sm rounded-circle"
+                            style={{
+                                backgroundColor: theme === "light" ? "#e9ecef" : "#2c2c2c",
+                                width: "32px",
+                                height: "32px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center"
+                            }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleDelete(card._id);
+                            }}
+                        >
+                            <i
+                                className="bi bi-trash-fill bounce-hover"
+                                style={{
+                                    color: theme === "light" ? "#dc3545" : "#ff7a7a",
+                                    transition: "transform 0.3s ease"
+                                }}
+                            ></i>
+                        </button>
+                    )}
 
                     {user && user._id === card.user_id && (
                         <button

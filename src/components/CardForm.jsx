@@ -7,6 +7,8 @@ import { useTheme } from "../providers/ThemeContext";
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useUser } from '../providers/UserContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CardForm({ cardId }) {
     const { theme } = useTheme();
@@ -106,8 +108,8 @@ function CardForm({ cardId }) {
             const { data } = await axios[method](requestUrl, payload, {
                 headers: { 'x-auth-token': token }
             });
-
-            navigate(`/card/${isEdit ? finalCardId : data._id}`);
+            toast.success(isEdit ? "Card updated successfully" : "Card created successfully");
+            navigate(`/cards/${isEdit ? finalCardId : data._id}`);
         } catch (error) {
             console.error(error);
             setErrors({ email: 'Card creation failed' });

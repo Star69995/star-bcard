@@ -12,7 +12,7 @@ function MyCardsPage() {
 
     return (
         <>
-            <div className="container mt-3">
+            <div className="container mt-3 text-center mb-4">
                 <h1>My Cards</h1>
             </div>
 

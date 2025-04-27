@@ -5,6 +5,8 @@ import { useTheme } from "../providers/ThemeContext";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useUser } from "../providers/UserContext";
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CardDetails = () => {
     const { id } = useParams();
@@ -175,6 +177,22 @@ const CardDetails = () => {
             minute: '2-digit'
         };
         return new Date(dateString).toLocaleDateString(undefined, options);
+    };
+
+    const handleDelete = async (cardId) => {
+        try {
+            await axios.delete(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${cardId}`, {
+                headers: {
+                    "x-auth-token": token,
+                },
+            });
+            toast.success('Card deleted successfully!');
+
+            navigate("/my-cards");
+
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     const fullAddress = card.address ?
@@ -385,7 +403,20 @@ const CardDetails = () => {
                                     <i className="bi bi-arrow-left me-2"></i>
                                     Back
                                 </button>
-                                <div>
+                                
+                                <div className="d-flex flex-wrap gap-2 mt-3 justify-content-center justify-content-md-end">
+
+                                    {user && card.user_id === user._id && (
+                                        <button
+                                            className="btn btn-danger me-2"
+                                            onClick={() => handleDelete(card._id)}
+
+                                        >
+                                            <i className="bi bi-trash-fill me-2"></i>
+                                            Delete
+                                        </button>
+                                    )}
+
                                     {user && card.user_id === user._id && (
                                         <button
                                             className="btn btn-warning me-2"

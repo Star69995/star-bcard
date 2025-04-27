@@ -7,6 +7,8 @@ import { useTheme } from "../providers/ThemeContext";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../providers/UserContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
     const { updateUserFromToken } = useUser();
@@ -40,6 +42,8 @@ function Login() {
             // console.log("Login response:", res.data)
 
             updateUserFromToken(res.data);
+
+            toast.success('Login successful!');
             
             // navigate to home page
             navigate('/')

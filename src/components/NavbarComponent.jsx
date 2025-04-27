@@ -5,6 +5,7 @@ import ThemeToggleButton from './ThemeToggleButton';
 import { useTheme } from '../providers/ThemeContext';
 import Login from './Login';
 import { useUser } from '../providers/UserContext';
+import SearchBar from './SearchBar';
 
 
 
@@ -44,8 +45,16 @@ const NavbarComponent = () => {
                 <Link onClick={() => setIsMenuOpen(false)}
                     className={brandClass} to="/">Star-bCard</Link>
 
+                {/*about  page*/}
+                <Link onClick={() => setIsMenuOpen(false)}
+                    className="nav-link mx-2 fw-medium" to="/about">About</Link>
+
                 {/* Wrapper for ThemeToggleButton, ensuring it sticks to the right */}
                 <div className="ms-auto d-flex align-items-center">
+
+                    {/* search bar */}
+                    <SearchBar />
+
 
                     <ThemeToggleButton />
 

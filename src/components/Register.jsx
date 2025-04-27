@@ -6,6 +6,8 @@ import FormField from './FormField';
 import { useTheme } from "../providers/ThemeContext";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register() {
 
@@ -104,6 +106,9 @@ function Register() {
 
             localStorage.setItem('token', loginRes.data)
 
+            toast.success('Registration successful!')
+            
+            // navigate to home page
             navigate('/')
         } catch (error) {
             console.error(error)
