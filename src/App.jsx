@@ -30,6 +30,7 @@ import SearchResultsPage from './pages/SearchResultsPage';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FooterComponent from './components/FooterComponent';
 
 
 const SandBox = () => { <><h1>Sandbox</h1><p>coming soon</p></> }
@@ -61,6 +62,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+        <FooterComponent />
       </BrowserRouter>
       <ToastContainer />
 

@@ -170,7 +170,7 @@ function Card({ card }) {
                 e.currentTarget.style.boxShadow = "";
             }}
         >
-            <div className="position-relative">
+            <div className="position-relative overflow-hidden">
                 <img
                     src={imgSrc}
                     className="card-img-top"
