@@ -8,10 +8,6 @@ The platform features a responsive design, dark mode, and user authentication.
 
 
 ## Features
-- dark mode
-- dynamic navbar
-- responsive design
-- user authentication
 - Create and edit digital business cards
 - User authentication for secure access
 - Responsive design for optimal viewing on various devices
@@ -19,8 +15,7 @@ The platform features a responsive design, dark mode, and user authentication.
 - Dynamic navbar for easy navigation
 
 ### Limitations
-- design could be better
-- no graphic interface for admin functions
+- No graphic interface for admin functions
 
 
 ## Technologies Used

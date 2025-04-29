@@ -25,6 +25,8 @@ import CreateCardForm from './components/CreateCardForm';
 import EditCardForm from './components/EditCardForm';
 import NotFound from './pages/NotFound';
 import AboutPage from './pages/AboutPage';
+// import SearchBar from './components/SearchBar';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -54,6 +56,8 @@ function App() {
             <Route path="/sandbox" element={<SandBox />} />
             <Route path="/create-card" element={<CreateCardForm />} />
             <Route path="/edit-card/:id" element={<EditCardForm />} />
+            <Route path="/search" element={<SearchResultsPage />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
