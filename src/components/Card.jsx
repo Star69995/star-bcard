@@ -1,11 +1,14 @@
-import "bootstrap-icons/font/bootstrap-icons.css";
-import { useTheme } from "../providers/ThemeContext";
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import { useUser } from "../providers/UserContext";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import "./Card.css";
+
+import { useTheme } from "../providers/ThemeContext";
+import { useUser } from "../providers/UserContext";
 
 function Card({ card }) {
     const navigate = useNavigate();
@@ -43,7 +46,6 @@ function Card({ card }) {
         bizNumber,
         image,
         address,
-        web
     } = card;
 
     const imgSrc = image?.url || "/api/placeholder/400/320";
@@ -53,14 +55,6 @@ function Card({ card }) {
     const addressString = address ?
         `${address.street || ""} ${address.houseNumber || ""}, ${address.city || ""}` :
         "Address not available";
-
-    // עיצוב בהתאם לנושא
-    const cardStyle = {
-        backgroundColor: theme === "light" ? "#fff" : "#1e1e1e",
-        color: theme === "light" ? "#000" : "#f8f9fa",
-        border: theme === "light" ? "1px solid #ddd" : "1px solid #444",
-        transition: "transform 0.3s ease, box-shadow 0.3s ease"
-    };
 
     // עיצוב כפתור הלייק
     const likeButtonStyle = {
@@ -147,17 +141,9 @@ function Card({ card }) {
         }
     };
 
-
-    // console.log(isLiked);
     return (
         <div
-            className="card shadow-lg rounded-3"
-            style={{
-                width: "18rem",
-                position: "relative",
-                ...cardStyle,
-                cursor: "pointer"
-            }}
+            className={`card shadow-lg rounded-3 card-custom ${theme === "light" ? "" : "bg-dark text-white"}`}
             onClick={handleCardClick}
             onMouseOver={(e) => {
                 e.currentTarget.style.transform = "translateY(-5px)";

@@ -1,4 +1,4 @@
-# Star bCard
+# 🌟 Star bCard
 
 **Star bCard** is a responsive React-based web application that allows users to create, manage, and view digital business cards. It includes login and registration, card creation/editing for business users, and user-specific favorite cards.
 
@@ -53,3 +53,19 @@ npm run dev
 - This project uses a custom theme context to manage dark mode and light mode themes.
 - No graphic interface for admin functions
 
+## 🐞 Known Issues
+
+- No graphic interface for admin functions
+
+- Long files:
+	- `src/components/Card.jsx`
+	- `src/pages/CardDetails.jsx`
+
+- Unify dark mode and light mode background colors in `src/providers/ThemeContext.jsx`:
+	- `src/components/Navbar.jsx`
+	- `src/components/FooterComponent.jsx`
+	- `src/components/FormField.jsx`
+	- `src/components/SearchBar.jsx`
+	- `src/pages/MyCardsPage.jsx`
+
+- Users can access admin/business pages without being authenticated using the URL directly

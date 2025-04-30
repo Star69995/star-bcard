@@ -72,16 +72,6 @@ function Login() {
                                         <div className="row mb-3">
                                             <FormField label="Email" name="email" type="email" touched={touched} errors={errors} />
                                             <FormField label="Password" name="password" type="password" touched={touched} errors={errors} />
-
-                                            <div className="col-12 mt-3">
-                                                <div className="d-flex justify-content-between align-items-center">
-                                                    <div>
-                                                        <a href="/forgot-password" className={`text-decoration-none ${theme === "dark" ? "text-light" : "text-primary"}`}>
-                                                            Forgot Password?
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div className="text-center">

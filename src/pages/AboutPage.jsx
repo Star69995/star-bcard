@@ -4,9 +4,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { useTheme } from "../providers/ThemeContext";
 import { Link } from 'react-router-dom';
 
-
 const AboutPage = () => {
-    const { theme } = useTheme(); 
+    const { theme } = useTheme();
     const isDarkMode = theme === 'dark';
 
     // Define dynamic theme classes
@@ -63,7 +62,6 @@ const AboutPage = () => {
                                     <Col md={4} sm={6} className="mb-4" key={index}>
                                         <Card className={`h-100 shadow-sm ${cardBgClass} ${cardBorderClass}`}>
                                             <Card.Body className={`text-center ${cardBgClass} ${techItemClass}`}>
-
                                                 <Badge bg={isDarkMode ? 'secondary' : 'light'}
                                                     text={isDarkMode ? 'light' : 'dark'}
                                                     className="mb-3 px-3 py-2 rounded-pill">
@@ -95,7 +93,6 @@ const AboutPage = () => {
                                 <Button as={Link} to="/register" variant={isDarkMode ? 'outline-info' : 'outline-info'} size="lg">
                                     Get Started
                                 </Button>
-
                             </div>
                         </Card.Body>
                     </Card>
@@ -124,27 +121,6 @@ const AboutPage = () => {
                                     </Col>
                                 ))}
                             </Row>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-
-            {/* Accessibility Section */}
-            <Row>
-                <Col md={6} className="mb-4">
-                    <Card className={`h-100 shadow-sm ${cardBgClass} ${cardBorderClass}`}>
-                        <Card.Header className={headerClasses.warning}>
-                            <h2 className="mb-0 d-flex align-items-center">
-                                <i className="bi bi-person-lines-fill me-2"></i> Accessibility
-                            </h2>
-                        </Card.Header>
-                        <Card.Body className={cardBgClass}>
-                            <p className={cardTextClass}>Our site is fully accessible and optimized for screen readers and mobile devices.</p>
-                            <div className="d-flex gap-2 mt-3 flex-wrap">
-                                <Badge bg={badgeBgClass} text={badgeTextClass} className="px-3 py-2">Screen Reader Friendly</Badge>
-                                <Badge bg={badgeBgClass} text={badgeTextClass} className="px-3 py-2">Mobile Optimized</Badge>
-                                <Badge bg={badgeBgClass} text={badgeTextClass} className="px-3 py-2">High Contrast</Badge>
-                            </div>
                         </Card.Body>
                     </Card>
                 </Col>
