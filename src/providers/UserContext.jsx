@@ -42,7 +42,7 @@ export function UserProvider({ children }) {
                     "x-auth-token": token
                 }
             });
-            // console.log("User data:", response.data);
+
             return response.data;
         } catch (error) {
             console.error("Error fetching user data:", error);
@@ -50,12 +50,11 @@ export function UserProvider({ children }) {
         }
     };
 
-    // שימוש ב־useEffect כדי לקרוא לפונקציה updateUserFromToken כאשר ה־token משתנה
     useEffect(() => {
         if (token) {
             updateUserFromToken(token);
         }
-    }, [token]);  // התניה על שינוי ה־token
+    }, [token]);  
 
     const logout = () => {
         localStorage.removeItem("token");

@@ -1,9 +1,6 @@
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Card from './Card';
 import { useUser } from '../providers/UserContext';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getCards } from '../services/api';
 
@@ -13,10 +10,6 @@ const CardsPage = ({ filterType = "all", searchQuery = "" }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { user } = useUser();
-
-    // קבלת פרמטר החיפוש מה-URL
-    // const [searchParams] = useSearchParams();
-    // const searchTerm = searchParams.get('query') || ""; // אם אין ערך, ישתמש במחרוזת ריקה
 
     useEffect(() => {
         getCards()

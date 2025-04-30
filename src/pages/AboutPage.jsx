@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const AboutPage = () => {
-    const { theme } = useTheme(); // Get theme state from your specific context
+    const { theme } = useTheme(); 
     const isDarkMode = theme === 'dark';
 
     // Define dynamic theme classes
@@ -131,8 +131,6 @@ const AboutPage = () => {
 
             {/* Accessibility Section */}
             <Row>
-                
-                
                 <Col md={6} className="mb-4">
                     <Card className={`h-100 shadow-sm ${cardBgClass} ${cardBorderClass}`}>
                         <Card.Header className={headerClasses.warning}>

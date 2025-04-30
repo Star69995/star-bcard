@@ -1,9 +1,9 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import React from 'react';
-import { useTheme } from '../providers/ThemeContext'; // ייבוא ThemeContext
+import { useTheme } from '../providers/ThemeContext'; 
 
 function FormField({ label, name, type = 'text', touched, errors }) {
-    const { theme } = useTheme(); // קבלת הערך של theme
+    const { theme } = useTheme(); 
 
     // הגדרת סטיילים לשדה הקלט על פי המצב
     const inputStyle = theme === 'dark'
@@ -18,7 +18,7 @@ function FormField({ label, name, type = 'text', touched, errors }) {
                 id={name}
                 name={name}
                 className={`form-control ${touched[name] && errors[name] ? 'is-invalid' : ''}`}
-                style={inputStyle}  // הסטייל ישתנה לפי מצב ה-theme
+                style={inputStyle}  
             />
             <ErrorMessage name={name} component="div" className="invalid-feedback" />
         </div>

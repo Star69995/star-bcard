@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ThemeToggleButton from './ThemeToggleButton';
 import { useTheme } from '../providers/ThemeContext';
-import Login from './Login';
 import { useUser } from '../providers/UserContext';
 import SearchBar from './SearchBar';
 
@@ -36,7 +35,6 @@ const NavbarComponent = () => {
         ? "navbar-brand fw-bold text-info"
         : "navbar-brand fw-bold text-primary";
 
-    // console.log("User:", user);
 
     return (
         <nav className={navbarClass} style={navbarStyle}>
@@ -52,9 +50,7 @@ const NavbarComponent = () => {
                 {/* Wrapper for ThemeToggleButton, ensuring it sticks to the right */}
                 <div className="ms-auto d-flex align-items-center">
 
-                    {/* search bar */}
                     <SearchBar />
-
 
                     <ThemeToggleButton />
 
@@ -93,7 +89,6 @@ const NavbarComponent = () => {
                                                 className="nav-link mx-2 fw-medium" to="/my-cards">MY CARDS</Link>
                                         </li>
                                     )}
-                                    {/* if is admin show sandbox */}
                                     {user.isAdmin && (
                                         <li className="nav-item">
                                             <Link onClick={() => setIsMenuOpen(false)}

@@ -35,7 +35,7 @@ export default function CreateCardForm() {
                 zip: Number(values.zip),
             },
         };
-        // Additional validation for phone, email, URLs
+
         const phoneRegex = /^\+?[0-9]{10,12}$/
         const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;

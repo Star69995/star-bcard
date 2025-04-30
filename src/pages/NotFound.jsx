@@ -11,7 +11,7 @@ function NotFound() {
             </p>
             <Link
                 to="/"
-                className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+                className="px-6 py-2 bg-blue-500 rounded-md hover:bg-blue-600 transition-colors"
             >
                 Return to Home
             </Link>

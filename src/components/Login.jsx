@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FormField from './FormField';
@@ -34,12 +34,10 @@ function Login() {
     // Form submission handler
     const handleSubmit = async (values, { setSubmitting, setErrors }) => {
         try {
-            // console.log("Login values:", values)
             const res = await axios.post('https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/login', {
                 email: values.email,
                 password: values.password
             })
-            // console.log("Login response:", res.data)
 
             updateUserFromToken(res.data);
 
@@ -48,8 +46,6 @@ function Login() {
             // navigate to home page
             navigate('/')
 
-            // אפשר לנתב לדף אחר אם רוצים:
-            // navigate('/dashboard')
         } catch (error) {
             console.error(error)
             setErrors({ password: 'Invalid email or password' })
@@ -79,17 +75,6 @@ function Login() {
 
                                             <div className="col-12 mt-3">
                                                 <div className="d-flex justify-content-between align-items-center">
-                                                    {/* <div>
-                                                        <Field
-                                                            type="checkbox"
-                                                            id="rememberMe"
-                                                            name="rememberMe"
-                                                            className="form-check-input"
-                                                        />
-                                                        <label className="form-check-label ms-2" htmlFor="rememberMe">
-                                                            Remember me
-                                                        </label>
-                                                    </div> */}
                                                     <div>
                                                         <a href="/forgot-password" className={`text-decoration-none ${theme === "dark" ? "text-light" : "text-primary"}`}>
                                                             Forgot Password?

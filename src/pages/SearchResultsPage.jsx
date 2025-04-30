@@ -1,4 +1,3 @@
-// SearchResultsPage.js
 import { useSearchParams } from 'react-router-dom';
 import CardsPage from '../components/CardsPage';
 

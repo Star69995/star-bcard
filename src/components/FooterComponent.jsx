@@ -11,9 +11,6 @@ import {
 } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-/**
- * Responsive footer with icons and dynamic links by user role and theme.
- */
 const FooterComponent = () => {
 	const { theme } = useTheme();
 	const { user } = useUser();

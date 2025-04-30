@@ -20,7 +20,6 @@ const CardDetails = () => {
     const { user, token } = useUser();
     const navigate = useNavigate();
 
-
     useEffect(() => {
         setLoading(true);
         axios.get(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`)
@@ -41,8 +40,6 @@ const CardDetails = () => {
             });
     }, [id, user]);
 
-
-
     const toggleLike = async () => {
         if (!token) {
             alert("Please log in to like cards");
@@ -62,8 +59,8 @@ const CardDetails = () => {
                 }
             );
 
-            setIsLiked(prev => !prev); // עדכון מצב הלייק
-            setLikesCount(prev => (isLiked ? prev - 1 : prev + 1));  // עדכון count לפי הלייק החדש
+            setIsLiked(prev => !prev); 
+            setLikesCount(prev => (isLiked ? prev - 1 : prev + 1)); 
 
             setTimeout(() => {
                 setIsAnimating(false);
@@ -73,7 +70,6 @@ const CardDetails = () => {
             setIsAnimating(false);
         }
     };
-
 
     // עיצוב בהתאם לנושא
     const cardStyle = {
@@ -164,10 +160,7 @@ const CardDetails = () => {
     }
 
     if (!card) return null;
-
-    // console.log(isLiked);
     
-
     const formatDate = (dateString) => {
         const options = {
             year: 'numeric',
